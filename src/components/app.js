@@ -4,7 +4,7 @@ angular.module('video-player')
   // bindings: {
   //   videos: '<'
   // },
-  controller: function ($scope, $window, youTube) {
+  controller: function (youTube) {
     
     this.selectVideo = () => {
     },
@@ -14,15 +14,19 @@ angular.module('video-player')
       this.currentVideo = this.videos[0];
     };
     
-    this.videos = $window.exampleVideoData;
-    this.currentVideo = this.videos[0];
+    this.videos = [];
+    this.currentVideo = {};
+    youTube.search('kittens', this.searchResults);
 
     
     this.onClick = (video) => {
       this.currentVideo = video.video;
     };
     
-    youTube.search('kittens', this.searchResults);
+    
+    this.result = (query) => {
+      youTube.search(query, this.searchResults);
+    };
  
   },
   
