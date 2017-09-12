@@ -1,13 +1,12 @@
 angular.module('video-player')
 
 .component('app', {
-  // bindings: {
-  //   videos: '<'
-  // },
+
   controller: function (youTube) {
     
-    this.selectVideo = () => {
-    },
+    this.selectVideo = (video) => {
+      this.currentVideo = video.video;
+    };
 
     this.searchResults = (videos) => {
       this.videos = videos;
@@ -18,16 +17,6 @@ angular.module('video-player')
     this.currentVideo = {};
     youTube.search('kittens', this.searchResults);
 
-    
-    this.onClick = (video) => {
-      this.currentVideo = video.video;
-    };
-    
-    
-    this.result = (query) => {
-      youTube.search(query, this.searchResults);
-    };
- 
   },
   
   templateUrl: 'src/templates/app.html'
