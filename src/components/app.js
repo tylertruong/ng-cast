@@ -15,6 +15,7 @@ angular.module('video-player')
     
     this.videos = [];
     this.currentVideo = {};
+    this.youTube = youTube;
     youTube.search('kittens', this.searchResults);
 
   },

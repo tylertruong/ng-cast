@@ -3,10 +3,11 @@ angular.module('video-player')
 .component('search', {
   bindings: {
     result: '<',
+    service: '<',
   },
-  controller: function(youTube) {
+  controller: function() {
     this.search = (query) => {
-      youTube.search(query, this.result);
+      this.service.search(query, this.result);
     };
   },
   templateUrl: 'src/templates/search.html'
